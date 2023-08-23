@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class DetailsPage extends StatelessWidget {
+  const DetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -779,6 +779,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Container(
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(right: 100.0),
@@ -803,43 +804,51 @@ class MyHomePage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 15),
-                                Text(
-                                  'Cholesterol',
-                                  style: GoogleFonts.getFont(
-                                    'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10*f,
-                                    color: Color(0xff3A3A3A),
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Cholesterol',
-                                  style: GoogleFonts.getFont(
-                                    'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10*f,
-                                    color: Color(0xff3A3A3A),
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Cholesterol',
-                                  style: GoogleFonts.getFont(
-                                    'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10*f,
-                                    color: Color(0xff3A3A3A),
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Cholesterol',
-                                  style: GoogleFonts.getFont(
-                                    'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10*f,
-                                    color: Color(0xff3A3A3A),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 40.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Cholesterol',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A),
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'Trans',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A),
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'Monounsaturated',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A),
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'Polyunsaturated',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
