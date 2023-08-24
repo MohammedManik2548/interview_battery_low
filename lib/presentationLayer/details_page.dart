@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:interview_battery_low/dataLayer/models/Hits.dart';
 
 import '../businessLogicLayer/details_controller.dart';
 class DetailsPage extends StatelessWidget {
+  final Hits hits;
   static const routeName = '/details_page';
-
   final DetailsController controller = Get.put(DetailsController());
+  DetailsPage({super.key,required this.hits});
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +188,10 @@ class DetailsPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Image.asset('assets/images/meal.png'),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network('${hits.recipe!.image}'),
+                            ),
                           ],
                         ),
                       ),
@@ -362,8 +367,10 @@ class DetailsPage extends StatelessWidget {
                                     height: 97 * w / 2,
                                     child: Center(
                                       child: Text(
-                                        '2.0 tbsp',
-                                        style: GoogleFonts.getFont('Poppins',
+                                        textAlign: TextAlign.center,
+                                        hits.recipe!.ingredients![i].weight!.toInt().toString()??'',
+                                        style: GoogleFonts.getFont(
+                                            'Poppins',
                                             fontWeight: FontWeight.w600,
                                             fontSize: 16 * f,
                                             color: Color(0xff3C444C)),
@@ -372,7 +379,7 @@ class DetailsPage extends StatelessWidget {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: const Color(0xff7def03)
+                                      color: Color(0xff7def03)
                                           .withOpacity(0.6),
                                       borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(20.0),
@@ -382,7 +389,8 @@ class DetailsPage extends StatelessWidget {
                                     height: 97 * w / 3,
                                     child: Center(
                                       child: Text(
-                                        'Vegetable oil',
+                                        textAlign: TextAlign.center,
+                                        hits.recipe!.ingredients![i].foodCategory??'',
                                         style: GoogleFonts.getFont(
                                           'Poppins',
                                           fontWeight: FontWeight.w500,
@@ -494,7 +502,7 @@ class DetailsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Color(0xffD9D9D9),
                                         borderRadius:
-                                            BorderRadius.circular(7.0),
+                                        BorderRadius.circular(7.0),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -539,7 +547,7 @@ class DetailsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Color(0xffD9D9D9),
                                         borderRadius:
-                                            BorderRadius.circular(7.0),
+                                        BorderRadius.circular(7.0),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -584,7 +592,7 @@ class DetailsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Color(0xffD9D9D9),
                                         borderRadius:
-                                            BorderRadius.circular(7.0),
+                                        BorderRadius.circular(7.0),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -642,9 +650,9 @@ class DetailsPage extends StatelessWidget {
                       width: 325*w,
                       //color: Colors.green,
                       child: const Text(
-                          'Low-Carb,Daily-Free,Egg-Free,peanut-Free,Tree-Nut-Free,Soy-Free,Fish-Freee',
+                        'Low-Carb,Daily-Free,Egg-Free,peanut-Free,Tree-Nut-Free,Soy-Free,Fish-Freee',
                         style: TextStyle(
-                            color: Colors.black54,
+                          color: Colors.black54,
                         ),
                       ),
                     ),
@@ -692,16 +700,16 @@ class DetailsPage extends StatelessWidget {
                         children: [
                           Positioned(
                             right: 0,
-                              child: SizedBox(
+                            child: SizedBox(
+                              width:  42*w,
+                              height:  52*w,
+                              child:
+                              Image.asset(
+                                'assets/images/subtract.png',
                                 width:  42*w,
                                 height:  52*w,
-                                child:
-                                Image.asset(
-                                  'assets/images/subtract.png',
-                                  width:  42*w,
-                                  height:  52*w,
-                                ),
                               ),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 8.0,right: 20.0),
@@ -770,12 +778,12 @@ class DetailsPage extends StatelessWidget {
                       width: 325*w,
                       height: 121*w,
                       decoration: const BoxDecoration(
-                        color: Color(0xff7EEF03),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(25.0),
-                          bottomLeft: Radius.circular(25.0),
-                          bottomRight: Radius.circular(25.0),
-                        )
+                          color: Color(0xff7EEF03),
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(25.0),
+                            bottomLeft: Radius.circular(25.0),
+                            bottomRight: Radius.circular(25.0),
+                          )
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -866,22 +874,22 @@ class DetailsPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                        '7g',
+                                      '7g',
                                       style: GoogleFonts.getFont(
-                                        'Poppins',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 10*f,
-                                        color: Color(0xff3A3A3A)
+                                          'Poppins',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A)
                                       ),
                                     ),
                                     SizedBox(width: 50),
                                     Text(
-                                        '11%',
+                                      '11%',
                                       style: GoogleFonts.getFont(
-                                        'Poppins',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 10*f,
-                                        color: Color(0xff3A3A3A)
+                                          'Poppins',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 10*f,
+                                          color: Color(0xff3A3A3A)
                                       ),
                                     ),
                                   ],

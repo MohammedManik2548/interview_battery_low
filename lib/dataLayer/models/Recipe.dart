@@ -1,5 +1,6 @@
 //import 'Ingredients.dart';
 //import 'TotalNutrients.dart';
+import 'Ingredients.dart';
 import 'TotalDaily.dart';
 import 'Digest.dart';
 
@@ -16,7 +17,7 @@ class Recipe {
       this.healthLabels, 
       this.cautions, 
       this.ingredientLines, 
-      //this.ingredients,
+      this.ingredients,
       this.calories, 
       this.totalWeight, 
       this.totalTime, 
@@ -39,12 +40,12 @@ class Recipe {
     healthLabels = json['healthLabels'] != null ? json['healthLabels'].cast<String>() : [];
     cautions = json['cautions'] != null ? json['cautions'].cast<String>() : [];
     ingredientLines = json['ingredientLines'] != null ? json['ingredientLines'].cast<String>() : [];
-    // if (json['ingredients'] != null) {
-    //   ingredients = [];
-    //   json['ingredients'].forEach((index, v) {
-    //     ingredients?.add(Ingredients.fromJson(v));
-    //   });
-    // }
+    if (json['ingredients'] != null) {
+      ingredients = [];
+      json['ingredients'].forEach((v) {
+        ingredients?.add(Ingredients.fromJson(v));
+      });
+    }
     calories = json['calories'];
     totalWeight = json['totalWeight'];
     totalTime = json['totalTime'];
@@ -71,7 +72,7 @@ class Recipe {
   List<String>? healthLabels;
   List<String>? cautions;
   List<String>? ingredientLines;
-  //List<Ingredients>? ingredients;
+  List<Ingredients>? ingredients;
   double? calories;
   double? totalWeight;
   double? totalTime;

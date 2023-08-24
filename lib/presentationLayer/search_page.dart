@@ -9,7 +9,6 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //controller.getRecipeData('chicken');
     double baseWidth = 375;
     double w = MediaQuery.of(context).size.width / baseWidth;
     double f = w * 0.97;
@@ -99,7 +98,12 @@ class SearchPage extends StatelessWidget {
                             var result = controller.chickenList.value![i];
                             return InkWell(
                               onTap: () {
-                                Get.to(() => DetailsPage());
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DetailsPage(
+                                            hits: controller
+                                                .chickenList.value![i])));
                               },
                               child: Container(
                                 margin:

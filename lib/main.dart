@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       home: SearchPage(),
       initialBinding: AllBindings(),
       getPages: [
-        GetPage(name: DetailsPage.routeName, page: ()=> DetailsPage()),
+        //GetPage(name: DetailsPage.routeName, page: ()=> DetailsPage(hits: '',)),
         GetPage(name: SearchPage.routeName, page: ()=>SearchPage()),
       ],
       initialRoute: '/',

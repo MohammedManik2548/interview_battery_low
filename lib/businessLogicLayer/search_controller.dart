@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:interview_battery_low/dataLayer/models/RecipeDataModel.dart';
-import 'package:dio/dio.dart';
 import '../dataLayer/models/Hits.dart';
-
+import 'package:dio/dio.dart';
 class SearchPageController extends GetxController{
 
 
