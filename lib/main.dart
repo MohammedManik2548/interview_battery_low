@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'bingdings/all_bangdings.dart';
 import 'presentationLayer/details_page.dart';
 import 'package:get/get.dart';
-
 import 'presentationLayer/search_page.dart';
 
 void main() {
@@ -11,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -22,7 +21,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: SearchPage(),
+      initialBinding: AllBindings(),
       getPages: [
+        GetPage(name: DetailsPage.routeName, page: ()=> DetailsPage()),
         GetPage(name: SearchPage.routeName, page: ()=>SearchPage()),
       ],
       initialRoute: '/',

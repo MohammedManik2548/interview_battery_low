@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
+import '../businessLogicLayer/details_controller.dart';
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  static const routeName = '/details_page';
+
+  final DetailsController controller = Get.put(DetailsController());
 
   @override
   Widget build(BuildContext context) {
