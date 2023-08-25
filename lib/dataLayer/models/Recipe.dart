@@ -3,6 +3,7 @@
 import 'Ingredients.dart';
 import 'TotalDaily.dart';
 import 'Digest.dart';
+import 'Totalnutrients.dart';
 
 class Recipe {
   Recipe({
@@ -24,7 +25,7 @@ class Recipe {
       this.cuisineType, 
       this.mealType, 
       this.dishType, 
-      //this.totalNutrients,
+      this.totalNutrients,
       this.totalDaily, 
       this.digest,});
 
@@ -52,7 +53,7 @@ class Recipe {
     cuisineType = json['cuisineType'] != null ? json['cuisineType'].cast<String>() : [];
     mealType = json['mealType'] != null ? json['mealType'].cast<String>() : [];
     dishType = json['dishType'] != null ? json['dishType'].cast<String>() : [];
-    //totalNutrients = json['totalNutrients'] != null ? TotalNutrients.fromJson(json['totalNutrients']) : null;
+    totalNutrients = json['totalNutrients'] != null ? TotalNutrients.fromJson(json['totalNutrients']) : null;
     totalDaily = json['totalDaily'] != null ? TotalDaily.fromJson(json['totalDaily']) : null;
     if (json['digest'] != null) {
       digest = [];
@@ -79,7 +80,7 @@ class Recipe {
   List<String>? cuisineType;
   List<String>? mealType;
   List<String>? dishType;
-  //TotalNutrients? totalNutrients;
+  TotalNutrients? totalNutrients;
   TotalDaily? totalDaily;
   List<Digest>? digest;
 
@@ -105,9 +106,9 @@ class Recipe {
     map['cuisineType'] = cuisineType;
     map['mealType'] = mealType;
     map['dishType'] = dishType;
-    // if (totalNutrients != null) {
-    //   map['totalNutrients'] = totalNutrients?.toJson();
-    // }
+    if (totalNutrients != null) {
+      map['totalNutrients'] = totalNutrients?.toJson();
+    }
     if (totalDaily != null) {
       map['totalDaily'] = totalDaily?.toJson();
     }
