@@ -23,7 +23,7 @@ class DetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 260 * w,
                 width: width,
                 child: Stack(
@@ -93,7 +93,7 @@ class DetailsPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Icon(Icons.draw),
+                          Icon(Icons.menu_outlined,size: 40*w,),
                         ],
                       ),
                     ),
@@ -102,30 +102,34 @@ class DetailsPage extends StatelessWidget {
                       left: 74 * w,
                       child: Text(
                         'REFINE SEARCH BY',
-                        style: TextStyle(
+                        style: GoogleFonts.getFont(
+                          'Poppins',
                           fontWeight: FontWeight.w300,
                           fontSize: 10 * f,
+                          color: const Color(0xff747D88),
                         ),
                       ),
                     ),
                     Positioned(
                       top: 62 * w,
-                      left: 168 * w,
+                      left: 165 * w,
                       child: Text(
                         'Calories,Diet,Ingredients',
-                        style: TextStyle(
+                        style: GoogleFonts.getFont(
+                          'Poppins',
                           fontWeight: FontWeight.w700,
                           fontSize: 10 * f,
+                          color: Color(0xff747D88)
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 62 * w,
+                      top: 58 * w,
                       left: 297 * w,
                       child: Container(
                         width: 20 * w,
                         height: 20 * w,
-                        child: Image.asset('assets/images/arradown.png'),
+                        child: Icon(Icons.keyboard_arrow_down),
                       ),
                     ),
                     Positioned(
@@ -216,67 +220,43 @@ class DetailsPage extends StatelessWidget {
                     SizedBox(
                       width: 5 * w,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 86 * w,
-                          height: 18 * w,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffD9D9D9),
-                            borderRadius: BorderRadius.circular(8.0),
+                    SizedBox(
+                      width: 325 * w,
+                      child: GridView.builder(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 4,
                           ),
-                          child: Center(
-                            child: Text(
-                              'Mediterranean',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10 * f,
-                                color: Color(0xff3C444C),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: hits.recipe!.healthLabels!.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (c, i){
+                            return Container(
+                              width: 86 * w,
+                              height: 18 * w,
+                              decoration: BoxDecoration(
+                                color: const Color(0xffD9D9D9),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 5 * w),
-                        Container(
-                          width: 86 * w,
-                          height: 18 * w,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffD9D9D9),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Peanut-Free',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10 * f,
-                                color: Color(0xff3C444C),
+                              child: Center(
+                                child: Text(
+                                  hits.recipe!.healthLabels![i],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 9 * f,
+                                    color: Color(0xff3C444C),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 5 * w),
-                        Container(
-                          width: 86,
-                          height: 18,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffD9D9D9),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Tree-Nut-Free',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10 * f,
-                                color: Color(0xff3C444C),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                            );
+                          }
+                      ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
                       width: 75 * w,
                       height: 17 * w,
@@ -344,7 +324,7 @@ class DetailsPage extends StatelessWidget {
                       child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemCount: 10,
+                          itemCount: hits.recipe!.ingredients!.length,
                           itemBuilder: (c, i) {
                             return Container(
                               decoration: BoxDecoration(
@@ -646,14 +626,32 @@ class DetailsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    Container(
-                      width: 325*w,
-                      //color: Colors.green,
-                      child: const Text(
-                        'Low-Carb,Daily-Free,Egg-Free,peanut-Free,Tree-Nut-Free,Soy-Free,Fish-Freee',
-                        style: TextStyle(
-                          color: Colors.black54,
-                        ),
+                    ///Tag
+                    SizedBox(
+                      width: 325 * w,
+                      child: GridView.builder(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 4,
+                          ),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: hits.recipe!.dietLabels!.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (c, i){
+                            return SizedBox(
+                              width: 325*w,
+                              child: Text(
+                                hits.recipe!.dietLabels![i],
+                                style: const TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            );
+                          }
                       ),
                     ),
 

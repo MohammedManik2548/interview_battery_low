@@ -65,7 +65,7 @@ class SearchPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Icon(Icons.menu),
+                    Icon(Icons.menu,size: 40*w,),
                   ],
                 ),
               ),
@@ -110,8 +110,7 @@ class SearchPage extends StatelessWidget {
                                     const EdgeInsets.only(left: 10, right: 10),
                                 decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(0.2),
-                                    border: Border.all(
-                                        color: Colors.grey.withOpacity(0.3))),
+                                    border: Border.all(color: Colors.grey.withOpacity(0.3))),
                                 child: Column(
                                   children: [
                                     Stack(
@@ -165,10 +164,7 @@ class SearchPage extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  result.recipe!.calories
-                                                          ?.toInt()
-                                                          .toString() ??
-                                                      '',
+                                                  result.recipe!.calories?.toInt().toString() ?? '',
                                                   style: const TextStyle(
                                                     color: Colors.green,
                                                   ),
