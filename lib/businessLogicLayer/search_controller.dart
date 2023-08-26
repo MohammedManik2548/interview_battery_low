@@ -48,8 +48,13 @@ class SearchPageController extends GetxController{
 
       var response = await dio.get(url,queryParameters: sendData,options: Options(
         headers: {
-          "X-RapidAPI-Key":"72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65",
-          "X-RapidAPI-Host":"edamam-recipe-search.p.rapidapi.com"
+          'Accept-Language': 'en',
+          'X-RapidAPI-Key': '72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65',
+          'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+
+
+          // "X-RapidAPI-Key":"72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65",
+          // "X-RapidAPI-Host":"edamam-recipe-search.p.rapidapi.com"
         }
       ));
       print('$runtimeType Hit_url: $url');
