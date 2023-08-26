@@ -14,7 +14,7 @@ class SearchPageController extends GetxController{
 
   @override
   void onInit() {
-    getRecipeData();
+    getRecipeData('chicken');
     //displayList.value = chickenList.value;
     // print('displayList: ${displayList.length}');
     super.onInit();
@@ -26,14 +26,15 @@ class SearchPageController extends GetxController{
   // }
 
 
-  void getRecipeData()async{
+  void getRecipeData(String v)async{
     Dio dio = Dio();
     //String url = 'https://edamam-recipe-search.p.rapidapi.com/search';
     String url = 'https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2';
 
     var sendData = {
+      'q':v,
       'type':'public',
-      'co2EmissionsClass':'B',
+      'co2EmissionsClass':'A',
       'field[0]':'uri',
       'beta':'true',
       'random':'true',

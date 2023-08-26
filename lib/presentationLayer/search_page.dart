@@ -49,7 +49,7 @@ class SearchPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: TextFormField(
                           onChanged: (v) {
-                            //controller.getRecipeData(v);
+                            controller.getRecipeData(v);
                           },
                           //style: TextStyle(color: Colors.white),
                           //controller: controller.searchEditingController,
