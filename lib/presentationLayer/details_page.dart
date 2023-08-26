@@ -272,27 +272,66 @@ class DetailsPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    ///cusine
+
                     SizedBox(
-                      width: 47 * w,
-                      height: 18 * w,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8 * w),
-                          color: const Color(0xffd9d9d9),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Italian',
-                            style: GoogleFonts.getFont(
-                              'Poppins',
-                              fontSize: 10 * w,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff3c444c),
-                            ),
+                      width: 325 * w,
+                      child: GridView.builder(
+                          gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 4,
                           ),
-                        ),
-                      ),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: hits.recipe!.cuisineType!.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (c, i) {
+                            return Container(
+                              width: 86 * w,
+                              height: 18 * w,
+                              decoration: BoxDecoration(
+                                color: const Color(0xffD9D9D9),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  hits.recipe!.healthLabels![i],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 9 * f,
+                                    color: const Color(0xff3C444C),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
                     ),
+
+                    // SizedBox(
+                    //   width: 47 * w,
+                    //   height: 18 * w,
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(8 * w),
+                    //       color: const Color(0xffd9d9d9),
+                    //     ),
+                    //     child: Center(
+                    //       child: Text(
+                    //         'Italian',
+                    //         style: GoogleFonts.getFont(
+                    //           'Poppins',
+                    //           fontSize: 10 * w,
+                    //           fontWeight: FontWeight.w500,
+                    //           color: const Color(0xff3c444c),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(height: 10),
 
                     ///under line text
@@ -743,7 +782,7 @@ class DetailsPage extends StatelessWidget {
                                     height: 35*w,
                                     child: Center(
                                         child: Text(
-                                            'Carbs',
+                                            hits.recipe!.totalNutrients!.chocdf!.label??'',
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.getFont(
                                                 'Poppins',
@@ -757,8 +796,8 @@ class DetailsPage extends StatelessWidget {
                                   width: 73*w,
                                     height: 35*w,
                                     child: Center(
-                                        child: Text(''
-                                            'Protein',
+                                        child: Text(
+                                            hits.recipe!.totalNutrients!.procnt!.label??'',
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.getFont(
                                                 'Poppins',
@@ -773,7 +812,7 @@ class DetailsPage extends StatelessWidget {
                                     height: 40*w,
                                     child: Center(
                                         child: Text(
-                                            'Cholestorol',
+                                            hits.recipe!.totalNutrients!.chole!.label??'',
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.getFont(
                                                 'Poppins',
@@ -841,7 +880,7 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Fat',
+                                            hits.recipe!.totalNutrients!.fat!.label??'',
                                             style: GoogleFonts.getFont(
                                               'Poppins',
                                               fontWeight: FontWeight.w700,
@@ -1065,7 +1104,7 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Fat',
+                                            hits.recipe!.totalNutrients!.chocdf!.label??'',
                                             style: GoogleFonts.getFont(
                                               'Poppins',
                                               fontWeight: FontWeight.w700,
@@ -1288,7 +1327,7 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Fat',
+                                            hits.recipe!.totalNutrients!.procnt!.label??'',
                                             style: GoogleFonts.getFont(
                                               'Poppins',
                                               fontWeight: FontWeight.w700,
@@ -1512,7 +1551,7 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Fat',
+                                            hits.recipe!.totalNutrients!.chole!.label??'',
                                             style: GoogleFonts.getFont(
                                               'Poppins',
                                               fontWeight: FontWeight.w700,

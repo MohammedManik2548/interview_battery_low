@@ -14,7 +14,7 @@ class SearchPageController extends GetxController{
 
   @override
   void onInit() {
-    getRecipeData('chicken');
+    getRecipeData();
     //displayList.value = chickenList.value;
     // print('displayList: ${displayList.length}');
     super.onInit();
@@ -26,12 +26,27 @@ class SearchPageController extends GetxController{
   // }
 
 
-  void getRecipeData(String v)async{
+  void getRecipeData()async{
     Dio dio = Dio();
-    String url = 'https://edamam-recipe-search.p.rapidapi.com/search';
+    //String url = 'https://edamam-recipe-search.p.rapidapi.com/search';
+    String url = 'https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2';
+
+    var sendData = {
+      'type':'public',
+      'co2EmissionsClass':'B',
+      'field[0]':'uri',
+      'beta':'true',
+      'random':'true',
+      'cuisineType[0]':'American',
+      'imageSize[0]':'LARGE',
+      'mealType[0]':'Breakfast',
+      'health[0]':'alcohol-cocktail',
+      'diet[0]':'balanced',
+      'dishType[0]':'Biscuits and cookies',
+    };
     try{
 
-      var response = await dio.get(url,queryParameters: {'q':v},options: Options(
+      var response = await dio.get(url,queryParameters: sendData,options: Options(
         headers: {
           "X-RapidAPI-Key":"72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65",
           "X-RapidAPI-Host":"edamam-recipe-search.p.rapidapi.com"
@@ -54,11 +69,57 @@ class SearchPageController extends GetxController{
       }
 
 
-    }catch(e, l){
-      print(e);
-      print(l);
+    } on DioException catch(e, l){
+
+      if(e.response!.statusCode==401){
+
+        var mes = e.response!.data['message'];
+        print('Error_mes: $mes');
+        print(l);
+
+      }else if(e.response!.statusCode==404){
+
+        var mes = e.response!.data['message'];
+        print('Error_mes: $mes');
+        print(l);
+
+      }else if(e.response!.statusCode == 500){
+
+        var mes = e.response!.data['message'];
+        print('Error_mes: $mes');
+        print(l);
+
+      }else{
+        print(e);
+        print(l);
+      }
+
+
     }
 
   }
 
 }
+
+// const options = {
+//   method: 'GET',
+//   url: 'https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2',
+//   params: {
+//     type: 'public',
+//     co2EmissionsClass: 'A+',
+//     'field[0]': 'uri',
+//     beta: 'true',
+//     random: 'true',
+//     'cuisineType[0]': 'American',
+//     'imageSize[0]': 'LARGE',
+//     'mealType[0]': 'Breakfast',
+//     'health[0]': 'alcohol-cocktail',
+//     'diet[0]': 'balanced',
+//     'dishType[0]': 'Biscuits and cookies'
+//   },
+//   headers: {
+//     'Accept-Language': 'en',
+//     'X-RapidAPI-Key': '72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65',
+//     'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+//   }
+// };
