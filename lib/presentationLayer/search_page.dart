@@ -65,7 +65,7 @@ class SearchPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Icon(Icons.menu,size: 40*w,),
+                    Icon(Icons.menu,size: 30*w,),
                   ],
                 ),
               ),

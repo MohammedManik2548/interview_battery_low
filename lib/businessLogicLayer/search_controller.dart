@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:interview_battery_low/dataLayer/models/RecipeDataModel.dart';
 import '../dataLayer/models/Hits.dart';
 import 'package:dio/dio.dart';
 class SearchPageController extends GetxController{
 
 
-  RxObjectMixin<RecipeDataModel> recipeData = RecipeDataModel().obs;
   var searchEditingController = TextEditingController();
   var chickenList = <Hits>[].obs;
-  var displayList = <Hits>[].obs;
 
 
   @override
@@ -53,9 +50,6 @@ class SearchPageController extends GetxController{
           'X-RapidAPI-Key': '72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65',
           'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
 
-
-          // "X-RapidAPI-Key":"72ce33ece0msh00e1648cd897aa5p119a6ejsnded9f3b72e65",
-          // "X-RapidAPI-Host":"edamam-recipe-search.p.rapidapi.com"
         }
       ));
       print('$runtimeType Hit_url: $url');
@@ -63,7 +57,6 @@ class SearchPageController extends GetxController{
 
       if(response.statusCode == 200){
         chickenList.clear();
-        recipeData.value = RecipeDataModel.fromJson(response.data);
         var list = response.data['hits'] as List;
         var temp = list.map((e) => Hits.fromJson(e));
         chickenList.addAll(temp);

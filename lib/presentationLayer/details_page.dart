@@ -96,7 +96,7 @@ class DetailsPage extends StatelessWidget {
                           ),
                           Icon(
                             Icons.menu_outlined,
-                            size: 40 * w,
+                            size: 30 * w,
                           ),
                         ],
                       ),
